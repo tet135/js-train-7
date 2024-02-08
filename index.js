@@ -151,9 +151,11 @@ let rangeObject = {
 
 // Функція "useSymbolIterator" використовує ітератор для отримання значень об'єкта
 function useSymbolIterator(obj) {
-  const result = [];
+  let result = [];
   for (let num of obj) {
     result[result.length] = num;
+    //або ще так можна додати кожне число в масив!!!!!!!!!!!!!!!!!!!!:
+    // result = [...result, value];
   } 
 
   return result;
@@ -191,14 +193,15 @@ let myObject = {
     // Створюємо логічний оператор який буде перевіряти чи властивість об'єкту currentIndex менша ніж довжина масиву category 
     if (this.currentIndex < this.category.length) {
     //Створюємо змінну value якій присвоємо властивість name елемента масиву category з індексом currentIndex    
-        const value = this.category[this.currentIndex][this.name];//////????????????????????????????????????????????????????????????????????????
+        const value = this.category[this.currentIndex]["name"];
     // Збільшимо currentIndex на одиницю    
         this.currentIndex++;
+    // Повертаємо об'єкт з властивістю value значенням якої буде value,та прапорцем done: false        
         return {
           value: value,
           done: false,
         };
-    // Повертаємо об'єкт з властивістю value значенням якої буде value,та прапорцем done: false    
+    
     //Якщо властивість об'єкту currentIndex більше або дорівнює довжині масиву category повертаємо об'єкт з прапорцем done: true, коли ітерація закінчена 
     } else {
       return { done: true };
